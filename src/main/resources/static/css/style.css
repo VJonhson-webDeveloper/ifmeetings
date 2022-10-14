@@ -1,0 +1,240 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: rgba(241, 170, 38, 0.65);
+    --secondary: rgba(63, 210, 223, 0.65);
+}
+
+
+/*Estilizando o menu principal*/
+
+nav {
+    height: 65px;
+}
+
+.navback {
+    background-color: #185B61;
+}
+
+.container-fluid {
+    margin-left: 18%;
+}
+
+.nav-link {
+    color: white;
+    margin-right: 38px;
+    margin-left: 38px;
+}
+
+.nav-link:hover {
+    color: #49C5CC;
+}
+
+.btn1,
+.btn2 {
+    border-radius: 25px;
+    border: 2px solid white;
+}
+
+.btn1:hover {
+    border-radius: 25px;
+    border: 2px solid white;
+    background-color: #49C5CC;
+    color: white;
+}
+
+.btn2:hover {
+    border-radius: 25px;
+    border: 2px solid white;
+    background-color: red;
+    color: white;
+}
+
+
+/*Estilizando conteudo central*/
+
+.logo-centro {
+    text-align: center;
+    place-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)), url("../imagens/IFRN-João-Câmara.png") no-repeat center center / cover;
+    height: 450px;
+    width: 100%;
+}
+
+.logo-centro img {
+    margin-top: 100px;
+    height: 300px;
+}
+
+.conteudo {
+    background-color: white;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 200px;
+}
+
+.texto p {
+    margin-top: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    text-align: justify;
+}
+
+.imagens {
+    float: right;
+    margin-left: 30px;
+}
+
+.imagens img {
+    height: 250px;
+}
+
+
+/*Estilizando o Footer*/
+
+footer {
+    background-color: #185B61;
+    padding: 50px 0;
+    margin-top: 850px;
+}
+
+.container-footer {
+    max-width: 1400px;
+    padding: 0 4%;
+    margin: auto;
+}
+
+.row-footer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column-footer {
+    width: 25%;
+    padding: 0 15px
+}
+
+.column-footer h4 {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+}
+
+.column-footer ul {
+    list-style: none;
+}
+
+.column-footer ul li {
+    margin: 10px 0px;
+    color: white;
+}
+
+.column-footer ul li a {
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+}
+
+.column-footer ul li a:hover {
+    padding-left: 10px;
+    color: orange;
+}
+
+.column-footer .social-media {
+    margin-top: 30px;
+}
+
+.column-footer .social-media a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white;
+}
+
+.column-footer .social-media a i {
+    font-size: 20px;
+}
+
+.column-footer .social-media a:hover {
+    color: #185B61;
+    background-color: white;
+}
+
+.column-footer .form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid white;
+    color: white;
+    background-color: transparent;
+}
+
+.column-footer .form input::placeholder {
+    color: white;
+}
+
+.column-footer .form button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 17px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #185B61;
+    background-color: white;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+
+/*Estilizando cards de Cursos*/
+
+.cursos {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: center;
+}
+
+.cursos-filhos {
+    width: 30%;
+    height: 480px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    border-radius: 15px;
+    background-color: whitesmoke;
+}
+
+.cursos-filhos img {
+    width: 220px;
+    margin-left: 72px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.cursos-filhos p {
+    margin: 20px;
+    text-align: center;
+}

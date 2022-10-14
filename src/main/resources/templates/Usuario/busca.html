@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Entrar</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/busca.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!--Menu principal da página-->
+    <nav class="navbar navbar-expand-lg navback">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/ifmeetings"><i class="bi bi-house-door"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Equipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn1" href="/usuarios/login" style="padding: 7px 27px 7px 27px; margin-right: 15px;">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn1" href="/usuarios/cadastro" style="padding: 7px 27px 7px 27px; margin: 0;">Cadastrar-se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Exibindo mensagem positiva se a remoção de usuario for realizada com sucesso-->
+    <div th:if="${msgSucesso} != null" class="alert alert-danger" role="alert">
+        <p th:text="${msgSucesso}" class="text-center" style="padding: 0; margin: 0; font-weight: 500;"></p>
+    </div>
+
+    <section>
+        <div class="items">
+            <img src="../imagens/logo.png" alt="">
+        </div>
+
+        <form th:action="@{/usuarios/buscar}" method="get">
+            <div class="pesquisa">
+                <input type="text" th:name="nome" placeholder="Digite o nome do usuário">
+                <input type="submit" value="Pesquisar">
+            </div>
+
+        </form>
+
+        <div class="usuarios" th:if="${usuariosEncontrados} != null" style="margin: 35px 25px 0px 25px; font-size: 13px">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-info" style="font-size: 16px;">
+                    <tr>
+                        <th>Nome:</th>
+                        <th>CPF:</th>
+                        <th>Email:</th>
+                        <th>Telefone:</th>
+                        <th>Perfil:</th>
+                        <th>Cidade:</th>
+                        <th>Estado:</th>
+                        <th>Escolaridade:</th>
+                        <th>Idade:</th>
+                        <th>Opções:</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="usuario : ${usuariosEncontrados}">
+                        <td th:text="${usuario.nome}"></td>
+                        <td th:text="${usuario.cpf}"></td>
+                        <td th:text="${usuario.email}"></td>
+                        <td th:text="${usuario.fone}"></td>
+                        <td th:text="${usuario.perfil}"></td>
+                        <td th:text="${usuario.cidade}"></td>
+                        <td th:text="${usuario.estado}"></td>
+                        <td th:text="${usuario.escolaridade}"></td>
+                        <td th:text="${usuario.idade}"></td>
+                        <td style="display:flex; flex-direction: column;">
+                            <a th:href="'/usuarios/editar/' + ${usuario.id}" class="btn btn-danger" style="background-color: orange; margin-bottom: 7px;">Editar</a>
+                            <a th:href="'/usuarios/remover/' + ${usuario.id}" class="btn btn-danger" onclick="if (!confirm('Deseja realmente remover o usuario?')) return false;">Remover</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!--Parte Final do Site-->
+    <footer>
+        <div class="container-footer">
+            <div class="row-footer">
+                <div class="column-footer">
+                    <ul>
+                        <h4>IF Meetings 2022</h4>
+                        <li style="font-weight: 300;">O IF Meetings é um projeto de Extensão do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte - campus João Câmara, do qual oferta aulas de inglês online e gratuitas com professores da instituição para toda
+                            a comunidade.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="column-footer">
+                    <ul>
+                        <h4>Cursos</h4>
+                        <li><a href="">Iniciante</a></li>
+                        <li><a href="">Elementar</a></li>
+                        <li><a href="">Conversação</a></li>
+                        <li><a href="">Como se inscrever</a></li>
+                    </ul>
+                </div>
+
+                <div class="column-footer">
+                    <ul>
+                        <h4>Links Úteis</h4>
+                        <li><a href="">Portal IFRN</a></li>
+                        <li><a href="">Sobre nós</a></li>
+                        <li><a href="">Dicas</a></li>
+                        <li><a href="">Equipe</a></li>
+                        <li><a href="">Cadastrar-se</a></li>
+                    </ul>
+                </div>
+
+                <div class="column-footer">
+                    <h4>Novidades</h4>
+
+                    <div class="form1">
+                        <form action="">
+                            <input type="email" placeholder="Digite o seu e-mail">
+                            <button>Enviar</button>
+                        </form>
+                    </div>
+
+                    <div class="social-media">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

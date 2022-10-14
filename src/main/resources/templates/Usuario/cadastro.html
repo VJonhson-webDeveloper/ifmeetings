@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar-se</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!--Menu principal da página-->
+    <nav class="navbar navbar-expand-lg navback">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/ifmeetings"><i class="bi bi-house-door"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Equipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn1" href="/usuarios/login" style="padding: 7px 27px 7px 27px; margin-right: 15px;">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn2" href="/ifmeetings" style="padding: 7px 27px 7px 27px; margin: 0;"><i class="bi bi-arrow-return-left"></i> Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Exibindo mensagem positiva se o cadastro for realizado com sucesso-->
+    <div th:if="${msgSucesso} != null" class="alert alert-info" role="alert">
+        <p th:text="${msgSucesso}" class="text-center" style="padding: 0; margin: 0; font-weight: 500;"></p>
+    </div>
+
+    <!--Container do Formulário de Cadastro de Usuários-->
+    <div class="form">
+        <div class="form-area">
+            <center>
+                <img src="../imagens/logo.png" style="width: 200px; margin-top: 30px;">
+            </center>
+
+            <form class="row g-3" th:action="@{/usuarios/salvar}" th:object="${usuario}" method="post">
+                <div class="col-md-12">
+                    <h5 style="color: #185B61"><i class="bi bi-caret-right-fill"></i> Cadastro de Usuários</h5>
+                </div>
+                <div class="col-md-4">
+                    <input type="hidden" name="u.id" value="${u?.id}" />
+                    <label for="inputNome" class="form-label">Nome completo: </label>
+                    <input type="text" class="form-control" id="inputNome" th:field="${usuario.nome}" value="${u?.nome}">
+                </div>
+                <div class="col-md-4">
+                    <label for="inputEmail" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="inputEmail" th:field="${usuario.email}" value="${u?.email}">
+                </div>
+                <div class="col-md-4">
+                    <label for="inputSenha" class="form-label">Senha:</label>
+                    <input type="password" class="form-control" id="inputSenha" th:field="${usuario.senha}" value="${u?.senha}">
+                </div>
+                <div class="col-4">
+                    <label for="inputNumero" class="form-label">Telefone:</label>
+                    <input type="text" class="form-control" id="inputNumero" placeholder="(xx) xxxxx-xxxx" th:field="${usuario.fone}" value="${u?.telefone}">
+                </div>
+                <div class="col-4">
+                    <label for="inputCpf" class="form-label">CPF:</label>
+                    <input type="text" class="form-control" id="inputCpf" placeholder="xxx.xxx.xxx-xx" th:field="${usuario.cpf}" value="${u?.cpf}">
+                </div>
+                <div class="col-md-4">
+                    <label for="inputPublico" class="form-label">Perfil:</label>
+                    <select id="inputPublico" class="form-select" th:field="${usuario.perfil}">
+                          <option value="">Selecione...</option>
+                          <option value="Aluno do IFRN">Aluno do IFRN</option>
+                          <option value="Servidor do IFRN">Servidor do IFRN</option>
+                          <option value="Público Externo">Público Externo</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputCidade" class="form-label">Cidade:</label>
+                    <input type="text" class="form-control" id="inputCidade" th:field="${usuario.cidade}" value="${u?.cidade}">
+                </div>
+                <div class="col-md-3">
+                    <label for="inputEstado" class="form-label">Estado:</label>
+                    <select id="inputEstado" class="form-select" th:field="${usuario.estado}">
+                          <option value="">Selecione...</option>
+                          <option th:each="e : ${estado}" th:text="${e}" th:value="${e}"></option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputIdade" class="form-label">Faixa Étaria:</label>
+                    <select id="inputIdade" class="form-select" th:field="${usuario.idade}">
+                          <option value="">Selecione...</option>
+                          <option value="Menor que 16 anos">Menor que 16 anos</option>
+                          <option value="Entre 16 a 25 anos">Entre 16 a 25 anos</option>
+                          <option value="Entre 25 a 40 anos">Entre 25 a 40 anos</option>
+                          <option value="Entre 40 a 60 anos">Entre 40 a 60 anos</option>
+                          <option value="Mais de 60 anos">Mais de 60 anos</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputEscolaridade" class="form-label">Cursando:</label>
+                    <select id="inputEscolaridade" class="form-select" th:field="${usuario.escolaridade}">
+                          <option value="">Selecione...</option>
+                          <option value="Ensino Fundamental">Ensino Fundamental</option>
+                          <option value="Ensino Médio">Ensino Médio</option>
+                          <option value="Graduação">Graduação</option>
+                          <option value="Pós-graduação">Pós-graduação</option>
+                          <option value="Mestrado">Mestrado</option>
+                          <option value="Doutorado">Doutorado</option>
+                          <option value="Pós-doutorado">Pós-doutorado</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="inputFoto" class="form-label">Escolha uma foto de perfil:</label>
+                    <input type="file" id="inputFoto" class="form-control" th:field="${usuario.foto}">
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+              Ciente de que meus dados serão utilizados apenas para fins acadêmicos da Instituição.
+            </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <input type="submit" class="btn btn-info" value="Enviar">
+                    <button type="reset" class="btn" style="background-color: orange;"> Limpar </button><br><br>
+                    <a href="/ifmeetings" style="color: #185B61; text-decoration: none; font-weight: 600;"><i class="bi bi-arrow-left-circle" style="font-size: 18px;"></i> Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Parte Final do Site-->
+    <footer>
+        <div class="container-footer">
+            <div class="row-footer">
+                <div class="column-footer">
+                    <ul>
+                        <h4>IF Meetings 2022</h4>
+                        <li style="font-weight: 300;">O IF Meetings é um projeto de Extensão do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte - campus João Câmara, do qual oferta aulas de inglês online e gratuitas com professores da instituição para toda
+                            a comunidade.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="column-footer">
+                    <ul>
+                        <h4>Cursos</h4>
+                        <li><a href="">Iniciante</a></li>
+                        <li><a href="">Elementar</a></li>
+                        <li><a href="">Conversação</a></li>
+                        <li><a href="">Como se inscrever</a></li>
+                    </ul>
+                </div>
+
+                <div class="column-footer">
+                    <ul>
+                        <h4>Links Úteis</h4>
+                        <li><a href="">Portal IFRN</a></li>
+                        <li><a href="">Sobre nós</a></li>
+                        <li><a href="">Dicas</a></li>
+                        <li><a href="">Equipe</a></li>
+                        <li><a href="">Cadastrar-se</a></li>
+                    </ul>
+                </div>
+
+                <div class="column-footer">
+                    <h4>Novidades</h4>
+
+                    <div class="form1">
+                        <form action="">
+                            <input type="email" placeholder="Digite o seu e-mail">
+                            <button>Enviar</button>
+                        </form>
+                    </div>
+
+                    <div class="social-media">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
