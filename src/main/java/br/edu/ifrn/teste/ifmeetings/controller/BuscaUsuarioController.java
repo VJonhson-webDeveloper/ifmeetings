@@ -27,6 +27,7 @@ public class BuscaUsuarioController {
         return "usuario/busca";
     }
 
+    @SuppressWarnings("unchecked")
     @GetMapping("/buscar")
     public String buscarUsuario(@RequestParam(name="nome", required = false) String nome, HttpSession memoria, ModelMap model) {
 
