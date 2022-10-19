@@ -208,33 +208,11 @@ footer {
 
 /*Estilizando cards de Cursos*/
 
-.cursos {
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    justify-content: space-around;
-    align-items: center;
-    justify-items: center;
+.cards {
+    margin-top: 25px;
 }
 
-.cursos-filhos {
-    width: 30%;
-    height: 480px;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    border-radius: 15px;
-    background-color: whitesmoke;
-}
-
-.cursos-filhos img {
-    width: 220px;
-    margin-left: 72px;
-    margin-top: 20px;
-    border-radius: 5px;
-}
-
-.cursos-filhos p {
-    margin: 20px;
-    text-align: center;
+.col {
+    width: 21rem;
+    margin-left: 120px;
 }

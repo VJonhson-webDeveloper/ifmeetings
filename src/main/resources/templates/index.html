@@ -49,8 +49,8 @@
         </div>
     </nav>
 
+    <!--Conteúdo Principal da página-->
     <main>
-
         <div class="logo-centro">
             <img src="imagens/logo.png">
 
@@ -81,21 +81,43 @@
 
             </div>
 
-            <div class="cursos">
-                <div class="cursos-filhos">
-                    <img src="imagens/beginner.png" alt="">
-                    <p>O nível iniciante é voltado para pessoas que querem iniciar os estudos na língua Inglesa ou que iniciaram mas não conseguiram terminar o curso iniciante em módulos anteriores</p>
-                    <button type="button" class="btn btn-info" style="margin-left: 25%;"><i class="bi bi-eye"></i> Vizualizar curso</button>
+            <!--Cards dos cursos-->
+            <div class="row row-cols-1 row-cols-md-3 g-4 cards">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="imagens/beginner.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Iniciante</h5>
+                            <p class="card-text">O nível iniciante é voltado para pessoas que querem iniciar os estudos na língua Inglesa ou que iniciaram mas não conseguiram terminar o curso iniciante em módulos anteriores.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-info"><i class="bi bi-eye"></i> Vizualizar curso</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="cursos-filhos">
-                    <img src="imagens/elementary.png" alt="">
-                    <p>O nível iniciante é voltado para pessoas que terminaram o curso iniciante do IF Meetings ou têm condições de começar um curso 100% em inglês.</p>
-                    <button type="button" class="btn btn-info" style="margin-left: 25%;"><i class="bi bi-eye"></i> Vizualizar curso</button>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="imagens/elementary.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Elementar</h5>
+                            <p class="card-text">O nível elementar é voltado para pessoas que terminaram o curso iniciante do IF Meetings ou têm condições de começar um curso 100% em inglês.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-info"><i class="bi bi-eye"></i> Vizualizar curso</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="cursos-filhos">
-                    <img src="imagens/conversation.png" alt="">
-                    <p>O nível iniciante é voltado para pessoas que estudam inglês a algum tempo e têm interesse em melhorar sua oralidade.</p>
-                    <button type="button" class="btn btn-info" style="margin-left: 25%;"><i class="bi bi-eye"></i> Vizualizar curso</button>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="imagens/conversation.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Conversação</h5>
+                            <p class="card-text">O nível Conversação é voltado para pessoas que estudam inglês a algum tempo e têm interesse em melhorar sua oralidade.</p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-info"><i class="bi bi-eye"></i> Vizualizar curso</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
