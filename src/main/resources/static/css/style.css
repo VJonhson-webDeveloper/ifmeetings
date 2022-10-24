@@ -102,7 +102,7 @@ nav {
 footer {
     background-color: #185B61;
     padding: 50px 0;
-    margin-top: 850px;
+    margin-top: 950px;
 }
 
 .container-footer {
@@ -214,5 +214,5 @@ footer {
 
 .col {
     width: 21rem;
-    margin-left: 120px;
+    margin-left: 50px;
 }
