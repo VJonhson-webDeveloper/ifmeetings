@@ -1,4 +1,4 @@
-package br.edu.ifrn.teste.ifmeetings.controller;
+package br.edu.ifrn.teste.ifmeetings.controller.usuario;
 
 
 import java.util.ArrayList;
