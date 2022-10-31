@@ -60,7 +60,7 @@
                 <img src="../imagens/logo.png" style="width: 200px; margin-top: 30px;">
             </center>
 
-            <form class="row g-3" th:object="${curso}" method="post">
+            <form class="row g-3" th:action="@{/cursos/cadastrar}" th:object="${curso}" method="post">
                 <div class="col-md-12">
                     <h5 style="color: #185B61"><i class="bi bi-caret-right-fill"></i> Cadastro de Cursos</h5>
                 </div>
