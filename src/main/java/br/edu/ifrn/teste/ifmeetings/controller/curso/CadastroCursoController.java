@@ -36,7 +36,7 @@ public class CadastroCursoController {
         Integer idCurso = (Integer) memoria.getAttribute("idCurso");
 
         //Criando lista de cursos já cadastrados na memória
-        List<Curso> cursoscadastrados = (List<Curso>) memoria.getAttribute("cursoscadastrados");
+        List<Curso> cursosCadastrados = (List<Curso>) memoria.getAttribute("cursosCadastrados");
 
         //se o id do Curso for igual a null (o), então iremos cadastrar o primeiro curso
         //por isso ele receberá o id = 1
@@ -45,18 +45,21 @@ public class CadastroCursoController {
         }
 
         //se não houver nenhum curso cadastrado teremos que criar uma nova lista de cursos cadastrados para armazena-los
-        if (cursoscadastrados == null) {
-            cursoscadastrados = new ArrayList<>();
+        if (cursosCadastrados == null) {
+            cursosCadastrados = new ArrayList<>();
         }
 
         //após as verificações
 
         //salvando o id do curso cadastrado e adiciona-o na lista de cursos cadastrados
         curso.setIdCurso(idCurso);
-        cursoscadastrados.add(curso);
+        cursosCadastrados.add(curso);
         idCurso++;
 
-        //enviandp mensagem de sucesso
+        memoria.setAttribute("idCurso", idCurso);
+        memoria.setAttribute("cursosCadastrados", cursosCadastrados);
+    
+        //enviando mensagem de sucesso
         attr.addFlashAttribute("msgSucesso", "Curso cadastrado com sucesso!");
 
         return "redirect:/cursos/cadastro";

@@ -1,5 +1,6 @@
 package br.edu.ifrn.teste.ifmeetings.controller.curso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,9 +21,14 @@ public class BuscaCursoController {
     public String listarCursos(HttpSession memoria, ModelMap model) {
 
         List<Curso> cursosCadastrados = (List<Curso>) memoria.getAttribute("cursosCadastrados");
+        List<Curso> cursosEncontrados = new ArrayList<>();
 
-        model.addAttribute("cursosCadastrados", cursosCadastrados);
+        if (cursosCadastrados != null) {
+            cursosEncontrados = cursosCadastrados;
+        }
 
-        return "curso/listar";
+        model.addAttribute("cursosEncontrados", cursosEncontrados);
+
+        return "curso/listaCursos";
         }
 }
