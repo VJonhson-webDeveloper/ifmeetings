@@ -55,7 +55,7 @@
     </div>
 
     <!--Cards dos cursos-->
-    <div th:if="${cursosEncontrados} != null">
+    <div class="container" th:if="${cursosEncontrados} != null">
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" th:each="curso : ${cursosEncontrados}">
                 <div class="card h-100 border-info mb-3">
@@ -65,7 +65,7 @@
                         <p class="card-text" th:text="${curso.descricao}"></p>
                     </div>
                     <div class="card-footer">
-                        <a th:href="'/cursos/editar/' + ${curso.idCurso}" class="btn btn-danger" style="background-color: orange; margin-bottom: 7px;">Editar</a>
+                        <a th:href="'/cursos/editar/' + ${curso.idCurso}" class="btn btn-danger" style="background-color: orange;">Editar</a>
                         <a th:href="'/cursos/remover/' + ${curso.idCurso}" class="btn btn-danger" onclick="if (!confirm('Deseja realmente remover este curso?')) return false;">Remover</a>
                     </div>
                 </div>
