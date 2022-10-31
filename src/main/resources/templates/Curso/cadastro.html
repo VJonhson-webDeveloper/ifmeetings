@@ -49,6 +49,10 @@
         </div>
     </nav>
 
+    <!-- Exibindo mensagem positiva se o cadastro for realizado com sucesso-->
+    <div th:if="${msgSucesso} != null" class="alert alert-info" role="alert">
+        <p th:text="${msgSucesso}" class="text-center" style="padding: 0; margin: 0; font-weight: 500;"></p>
+    </div>
 
     <div class="form1">
         <div class="form-area">
