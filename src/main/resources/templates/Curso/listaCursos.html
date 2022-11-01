@@ -49,24 +49,39 @@
         </div>
     </nav>
 
-    <!-- Exibindo mensagem positiva se o cadastro for realizado com sucesso-->
-    <div th:if="${msgSucesso} != null" class="alert alert-info" role="alert">
-        <p th:text="${msgSucesso}" class="text-center" style="padding: 0; margin: 0; font-weight: 500;"></p>
+    <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <i class="bi bi-info-circle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:"></i>
+        <div>
+            Atenção: Revise as informações antes de qualquer alteração!
+        </div>
     </div>
 
-    <!--Cards dos cursos-->
-    <div class="container" th:if="${cursosEncontrados} != null">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col" th:each="curso : ${cursosEncontrados}">
-                <div class="card h-100 border-info mb-3">
-                    <img src="../imagens/beginner.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${curso.titulo}"></h5>
-                        <p class="card-text" th:text="${curso.descricao}"></p>
-                    </div>
-                    <div class="card-footer">
-                        <a th:href="'/cursos/editar/' + ${curso.idCurso}" class="btn btn-danger" style="background-color: orange;">Editar</a>
-                        <a th:href="'/cursos/remover/' + ${curso.idCurso}" class="btn btn-danger" onclick="if (!confirm('Deseja realmente remover este curso?')) return false;">Remover</a>
+    <div class="container">
+        <!-- Exibindo mensagem positiva se o cadastro for realizado com sucesso-->
+        <div th:if="${msgSucesso} != null" class="alert alert-info" role="alert">
+            <p th:text="${msgSucesso}" class="text-center" style="padding: 0; margin: 0; font-weight: 500;"></p>
+        </div>
+
+        <!--Cards dos cursos-->
+        <div class="cursos" th:if="${cursosEncontrados} != null">
+            <div class="row g-3" style="margin-top: 25px; margin-bottom: 25px;">
+                <div class="col-md-12">
+                    <h5 style="color: #185B61;"><i class="bi bi-caret-right-fill"></i> Listagem de Cursos</h5>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col" th:each="curso : ${cursosEncontrados}">
+                    <div class="card h-100 border-info mb-3">
+                        <img src="../imagens/beginner.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${curso.titulo}"></h5>
+                            <p class="card-text" th:text="${curso.descricao}"></p>
+                        </div>
+                        <div class="card-footer">
+                            <a th:href="'/cursos/editar/' + ${curso.idCurso}" class="btn btn-danger" style="background-color: orange;">Editar</a>
+                            <a th:href="'/cursos/remover/' + ${curso.idCurso}" class="btn btn-danger" onclick="if (!confirm('Deseja realmente remover este curso?')) return false;">Remover</a>
+                        </div>
                     </div>
                 </div>
             </div>

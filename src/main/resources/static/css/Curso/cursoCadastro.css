@@ -180,3 +180,11 @@ footer {
     font-weight: bold;
     border-radius: 3px;
 }
+
+
+/*Estilizando cards da listagem de cursos*/
+
+.col {
+    width: 21rem;
+    margin-left: 50px;
+}
