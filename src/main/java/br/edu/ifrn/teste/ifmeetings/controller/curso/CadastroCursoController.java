@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -63,5 +65,22 @@ public class CadastroCursoController {
         attr.addFlashAttribute("msgSucesso", "Curso cadastrado com sucesso!");
 
         return "redirect:/cursos/cadastro";
+    }
+
+    @SuppressWarnings("unchecked")
+    @GetMapping("/editar/{idCurso}")
+    public String editarCurso(@PathVariable("id") Integer idCurso, ModelMap model, HttpSession memoria) {
+
+        List<Curso> cursosCadastrados = (List<Curso>) memoria.getAttribute("cursosCadastrados");
+
+        Curso c = new Curso();
+        c.setIdCurso(idCurso);
+
+        int posicaoCursoLista = cursosCadastrados.indexOf(c);
+        c = cursosCadastrados.get(posicaoCursoLista);
+
+        model.addAttribute("curso", c);
+
+        return "/curso/cadastro";
     }
 }

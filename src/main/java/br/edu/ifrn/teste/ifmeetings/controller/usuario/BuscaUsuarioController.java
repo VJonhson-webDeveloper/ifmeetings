@@ -31,7 +31,7 @@ public class BuscaUsuarioController {
     @GetMapping("/buscar")
     public String buscarUsuario(@RequestParam(name="nome", required = false) String nome, HttpSession memoria, ModelMap model) {
 
-        //obtendo lista de usuarios cadastrados em memoria 
+        //obtendo lista de usuarios cadastrados em memoria
         List<Usuario> usuariosCadastrados = (List<Usuario>) memoria.getAttribute("usuariosCadastrados");
         List<Usuario> usuariosEncontrados = new ArrayList<>();
 
