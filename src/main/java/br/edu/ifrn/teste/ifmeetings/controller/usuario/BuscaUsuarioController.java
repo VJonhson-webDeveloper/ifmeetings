@@ -74,21 +74,4 @@ public class BuscaUsuarioController {
 
         return "redirect:/usuarios/buscar";
     }
-
-    @SuppressWarnings("unchecked")
-    @GetMapping("/editar/{id}")
-    public String editarUsuario(@PathVariable("id") Integer idUsuario, ModelMap model, HttpSession memoria) {
-
-        List<Usuario> usuariosCadastrados = (List<Usuario>) memoria.getAttribute("usuariosCadastrados");
-
-        Usuario u = new Usuario();
-        u.setId(idUsuario);
-
-        int posicaoUsuarioLista = usuariosCadastrados.indexOf(u);
-        u = usuariosCadastrados.get(posicaoUsuarioLista);
-
-        model.addAttribute("usuario", u);
-
-        return "/usuario/cadastro";
-    }
 }

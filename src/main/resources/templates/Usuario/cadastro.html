@@ -61,25 +61,25 @@
                     <h5 style="color: #185B61"><i class="bi bi-caret-right-fill"></i> Cadastro de Usuários</h5>
                 </div>
                 <div class="col-md-4">
-                    <input type="hidden" name="u.id" value="${u?.id}" />
+                    <input type="hidden" th:field="${usuario.id}" />
                     <label for="inputNome" class="form-label">Nome completo: </label>
-                    <input type="text" class="form-control" id="inputNome" th:field="${usuario.nome}" value="${u?.nome}">
+                    <input type="text" class="form-control" id="inputNome" th:field="${usuario.nome}">
                 </div>
                 <div class="col-md-4">
                     <label for="inputEmail" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="inputEmail" th:field="${usuario.email}" value="${u?.email}">
+                    <input type="email" class="form-control" id="inputEmail" th:field="${usuario.email}">
                 </div>
                 <div class="col-md-4">
                     <label for="inputSenha" class="form-label">Senha:</label>
-                    <input type="password" class="form-control" id="inputSenha" th:field="${usuario.senha}" value="${u?.senha}">
+                    <input type="password" class="form-control" id="inputSenha" th:field="${usuario.senha}">
                 </div>
                 <div class="col-4">
                     <label for="inputNumero" class="form-label">Telefone:</label>
-                    <input type="text" class="form-control" id="inputNumero" placeholder="(xx) xxxxx-xxxx" th:field="${usuario.fone}" value="${u?.telefone}">
+                    <input type="text" class="form-control" id="inputNumero" placeholder="(xx) xxxxx-xxxx" th:field="${usuario.fone}">
                 </div>
                 <div class="col-4">
                     <label for="inputCpf" class="form-label">CPF:</label>
-                    <input type="text" class="form-control" id="inputCpf" placeholder="xxx.xxx.xxx-xx" th:field="${usuario.cpf}" value="${u?.cpf}">
+                    <input type="text" class="form-control" id="inputCpf" placeholder="xxx.xxx.xxx-xx" th:field="${usuario.cpf}">
                 </div>
                 <div class="col-md-4">
                     <label for="inputPublico" class="form-label">Perfil:</label>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-md-3">
                     <label for="inputCidade" class="form-label">Cidade:</label>
-                    <input type="text" class="form-control" id="inputCidade" th:field="${usuario.cidade}" value="${u?.cidade}">
+                    <input type="text" class="form-control" id="inputCidade" th:field="${usuario.cidade}">
                 </div>
                 <div class="col-md-3">
                     <label for="inputEstado" class="form-label">Estado:</label>
@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <input type="submit" class="btn btn-info" value="Enviar">
+                    <input type="submit" class="btn btn-info" th:value="${usuario.id} == 0 ? Cadastrar : Editar">
                     <button type="reset" class="btn" style="background-color: orange;"> Limpar </button><br><br>
                     <a href="/ifmeetings" style="color: #185B61; text-decoration: none; font-weight: 600;"><i class="bi bi-arrow-left-circle" style="font-size: 18px;"></i> Voltar</a>
                 </div>
