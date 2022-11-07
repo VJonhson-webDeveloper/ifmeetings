@@ -56,25 +56,23 @@
 
     <div class="form1">
         <div class="form-area">
-            <center>
-                <img src="../imagens/logo.png" style="width: 200px; margin-top: 30px;">
-            </center>
+            <img src="../imagens/logo.png" style="width: 200px; margin-top: 30px; margin-left: 35%;">
 
             <form class="row g-3" th:action="@{/cursos/cadastrar}" th:object="${curso}" method="post">
                 <div class="col-md-12">
                     <h5 style="color: #185B61"><i class="bi bi-caret-right-fill"></i> Cadastro de Cursos</h5>
                 </div>
                 <div class="col-md-12">
-                    <input type="hidden" name="c.idCurso" value="${c?.idCurso}" />
+                    <input type="hidden" th:field="${curso.idCurso}" />
                     <label for="inputTitulo" class="form-label">Titulo: </label>
-                    <input type="text" class="form-control" id="inputTitulo" th:field="${curso.titulo}" value="${c?.titulo}">
+                    <input type="text" class="form-control" id="inputTitulo" th:field="${curso.titulo}">
                 </div>
                 <div class="col-md-12">
                     <label for="inputDescricao" class="form-label">Descrição: </label>
-                    <textarea class="form-control" id="inputDescricao" th:field="${curso.descricao}" value="${c?.descricao}" cols="25" rows="5"></textarea>
+                    <textarea class="form-control" id="inputDescricao" th:field="${curso.descricao}" cols="25" rows="5"></textarea>
                 </div>
                 <div class="col-12">
-                    <input type="submit" class="btn btn-info" value="Enviar">
+                    <input type="submit" class="btn btn-info" th:value="${curso.idCurso} == 0 ? Cadastrar : Editar">
                     <button type="reset" class="btn" style="background-color: orange;"> Limpar </button><br><br>
                     <a href="/ifmeetings" style="color: #185B61; text-decoration: none; font-weight: 600;"><i class="bi bi-arrow-left-circle" style="font-size: 18px;"></i> Voltar</a>
                 </div>

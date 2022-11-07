@@ -53,23 +53,33 @@ public class CadastroCursoController {
 
         //após as verificações
 
-        //salvando o id do curso cadastrado e adiciona-o na lista de cursos cadastrados
-        curso.setIdCurso(idCurso);
-        cursosCadastrados.add(curso);
-        idCurso++;
+        if (curso.getIdCurso() == 0) {
 
-        memoria.setAttribute("idCurso", idCurso);
-        memoria.setAttribute("cursosCadastrados", cursosCadastrados);
-    
-        //enviando mensagem de sucesso
-        attr.addFlashAttribute("msgSucesso", "Curso cadastrado com sucesso!");
+            //salvando o id do curso cadastrado e adiciona-o na lista de cursos cadastrados
+            curso.setIdCurso(idCurso);
+            cursosCadastrados.add(curso);
+            idCurso++;
 
+            memoria.setAttribute("idCurso", idCurso);
+            memoria.setAttribute("cursosCadastrados", cursosCadastrados);
+      
+            //enviando mensagem de sucesso
+            attr.addFlashAttribute("msgSucesso", "Curso cadastrado com sucesso!");
+
+        } else {
+
+            //é edição
+            cursosCadastrados.remove(curso);
+            cursosCadastrados.add(curso);
+            attr.addFlashAttribute("msgSucesso", "Curso editado com sucesso!");
+        }
+        
         return "redirect:/cursos/cadastro";
     }
 
     @SuppressWarnings("unchecked")
     @GetMapping("/editar/{idCurso}")
-    public String editarCurso(@PathVariable("id") Integer idCurso, ModelMap model, HttpSession memoria) {
+    public String editarCurso(@PathVariable("idCurso") Integer idCurso, ModelMap model, HttpSession memoria) {
 
         List<Curso> cursosCadastrados = (List<Curso>) memoria.getAttribute("cursosCadastrados");
 
