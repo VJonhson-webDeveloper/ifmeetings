@@ -1,20 +1,50 @@
 package br.edu.ifrn.teste.ifmeetings.Dominio;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 public class Usuario {
     
     private int id;
+
+    @NotBlank(message = "O campo nome é obrigatório!")
     private String nome;
+
+    @NotBlank(message = "O campo cpf é obrigatório!")
+    @Pattern(regexp = "[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}", message = "O CPF digitado não está no formato correto!")
     private String cpf;
+
+    @NotBlank(message = "O campo email é obrigatório!")
+    @Email(message = "O Email digitado não está no formato correto!")
     private String email;
+
+    @NotBlank(message = "O campo telefone é obrigatório!")
+    @Pattern(regexp = "[0-9]{2} [0-9]{5}-[0-9]{4}", message = "O telefone digitado não está no formato correto!")
     private String fone;
+
     private String foto;
+
+    @NotBlank(message = "O campo cidade é obrigatório!")
     private String cidade;
+
+    @NotBlank(message = "O campo estado é obrigatório!")
     private String estado;
+
+    @NotBlank(message = "O campo senha é obrigatório!")
     private String senha;
+
+    @NotBlank(message = "O campo perfil é obrigatório!")
     private String perfil;
+
+    @NotBlank(message = "O campo escolaridade é obrigatório!")
     private String escolaridade;
+
+    @NotBlank(message = "O campo idade é obrigatório!")
     private String idade;
 
+    
+    /* Código utilizado para que o id funcione corretamente */
     @Override
     public int hashCode() {
 
@@ -43,6 +73,7 @@ public class Usuario {
             return true;
     }
 
+    /* Getters e Setters dos atributos */
     public int getId() {
         return id;
     }

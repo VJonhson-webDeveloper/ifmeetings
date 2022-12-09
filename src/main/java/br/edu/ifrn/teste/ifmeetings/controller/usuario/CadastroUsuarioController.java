@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,8 +38,13 @@ public class CadastroUsuarioController {
 
     @SuppressWarnings("unchecked")
     @PostMapping("/salvar")
-    public String cadastrarUsuario(Usuario usuario, RedirectAttributes attr, HttpSession memoria) {
+    public String cadastrarUsuario(@Valid Usuario usuario, BindingResult resultadoAplicacao, RedirectAttributes attr, HttpSession memoria) {
 
+        //verificando se os campos do formulario possuem algum erro
+        if (resultadoAplicacao.hasErrors()) {
+            return "redirect:/usuarios/cadastro";
+
+        } else {
         //acessando dados da memória
 
         //Pegando último ID Cadastrado
@@ -76,6 +83,7 @@ public class CadastroUsuarioController {
         }
 
         return "redirect:/usuarios/cadastro";
+        }
     }
 
     @SuppressWarnings("unchecked")
