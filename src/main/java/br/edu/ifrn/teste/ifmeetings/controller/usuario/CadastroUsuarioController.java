@@ -38,13 +38,13 @@ public class CadastroUsuarioController {
 
     @SuppressWarnings("unchecked")
     @PostMapping("/salvar")
-    public String cadastrarUsuario(@Valid Usuario usuario, BindingResult resultadoAplicacao, RedirectAttributes attr, HttpSession memoria) {
+    public String cadastrarUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attr, HttpSession memoria) {
 
         //verificando se os campos do formulario possuem algum erro
-        if (resultadoAplicacao.hasErrors()) {
-            return "redirect:/usuarios/cadastro";
+        if (result.hasErrors()) {
+            return "usuario/cadastro";
 
-        } else {
+        }
         //acessando dados da memória
 
         //Pegando último ID Cadastrado
@@ -83,7 +83,7 @@ public class CadastroUsuarioController {
         }
 
         return "redirect:/usuarios/cadastro";
-        }
+        
     }
 
     @SuppressWarnings("unchecked")
