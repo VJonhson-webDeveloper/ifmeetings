@@ -1,11 +1,20 @@
 package br.edu.ifrn.teste.ifmeetings.Dominio;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class Curso {
     
     private int idCurso;
+
+    @NotBlank(message = "Este campo é obrigatório!")
+    @Size(min = 5, message = "O titulo deve ter pelo menos 5 letras.")
     private String titulo;
+
+    @NotBlank(message = "Este campo é obrigatório.")
     private String descricao;
     
+    /*Getters e Setters dos atributos */
     public int getIdCurso() {
         return idCurso;
     }
@@ -27,6 +36,7 @@ public class Curso {
         this.descricao = descricao;
     }
     
+    /*Codigo para que o ID da Entidade Cursos funcione*/
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -47,10 +57,4 @@ public class Curso {
             return false;
         return true;
     }
-
-    
-
-
-
-    
 }
